@@ -39,7 +39,7 @@ public class Moving extends JPanel implements ActionListener {
             x+=1;
         
         repaint();
-     s   
+        
         counter = (++counter)%40;
         
         System.out.println("c = " + c + "\n" + "v = " + v + "\n" + "count = " + counter + "\n" + "x = " + x + "\n");
