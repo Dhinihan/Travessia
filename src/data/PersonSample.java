@@ -2,12 +2,18 @@ package data;
 
 import java.util.List;
 
-public class PersonSample {
+public class PersonSample implements Sample{
 
     private List<SampleWalk> walkSamples;
+    private String nome;
 
-    public PersonSample(List<SampleWalk> samples) {
+    public PersonSample(int index, List<SampleWalk> samples) {
         this.walkSamples = samples;
+        this.nome = "Pessoa " + index/2;
+        if(index%2 == 0)
+            this.nome += " Constante";
+        else
+            this.nome += " Acelerada";
     }
 
     public SampleWalk getWalkSample(int index) {
@@ -28,5 +34,10 @@ public class PersonSample {
             acceleration += sampleWalk.getAcceleration();
         }
         return acceleration/walkSamples.size();
+    }
+    
+    @Override
+    public String toString() {
+        return nome;
     }
 }

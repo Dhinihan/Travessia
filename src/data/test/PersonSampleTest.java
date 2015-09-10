@@ -34,24 +34,24 @@ public class PersonSampleTest {
     
     @Test
     public void AccessTest() {
-        PersonSample sample = new PersonSample(this.uniformSamples);
+        PersonSample sample = new PersonSample(1, this.uniformSamples);
         Assert.assertEquals(uniformSamples.get(3), sample.getWalkSample(3));
         Assert.assertEquals(uniformSamples.get(1), sample.getWalkSample(1));
     }
     
     @Test
     public void VelocityTest() {
-        PersonSample sample = new PersonSample(this.uniformSamples);
+        PersonSample sample = new PersonSample(1, this.uniformSamples);
         Assert.assertEquals(1.441, sample.getAverageVelocity(), 0.001);
-        sample = new PersonSample(this.acceleratedSamples);
+        sample = new PersonSample(1, this.acceleratedSamples);
         Assert.assertEquals(0, sample.getAverageVelocity(), 0.001);
     }
     
     @Test
     public void AccelerationTest() {
-        PersonSample sample = new PersonSample(this.acceleratedSamples);
+        PersonSample sample = new PersonSample(1, this.acceleratedSamples);
         Assert.assertEquals(1.295, sample.getAverageAcceleration(), 0.001);
-        sample = new PersonSample(this.uniformSamples);
+        sample = new PersonSample(1, this.uniformSamples);
         Assert.assertEquals(0, sample.getAverageAcceleration(), 0.001);
     }
 

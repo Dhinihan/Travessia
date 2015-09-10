@@ -21,14 +21,11 @@ public class ConstantAnimator extends Animator {
             motion++;
             accumulated++;
         }
-        System.out.println("round: " + (40-count));
-        System.out.println("    odds = " + odds);
-        System.out.println("    motion = " + motion);
         return motion;
     }
 
     public Animator setSpeed(double speed) {
-        this.speed = (int) Math.round(speed*100);
+        this.speed = (int) Math.round(speed*Animator.meterToPixels());
         return this;
     }
 

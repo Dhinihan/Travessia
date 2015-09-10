@@ -6,8 +6,8 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import data.PersonSample;
 import parse.DataParser;
+import data.Sample;
 
 public class DataParserTest {
     
@@ -32,7 +32,7 @@ public class DataParserTest {
     public void getDataTest() throws IOException {
         DataParser parser = new DataParser();
         parser.appendCSV(this.getCsvExample());
-        List<PersonSample> samples = parser.getSamples();
+        List<Sample> samples = parser.getSamples();
         Assert.assertEquals(2, samples.size());
         Assert.assertEquals(1.441, samples.get(0).getAverageVelocity(), 0.001);
         Assert.assertEquals(1.295, samples.get(1).getAverageAcceleration(), 0.001);

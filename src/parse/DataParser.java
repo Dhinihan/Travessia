@@ -13,6 +13,7 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
 import data.PersonSample;
+import data.Sample;
 import data.SampleWalk;
 
 public class DataParser{
@@ -69,11 +70,11 @@ public class DataParser{
         return CSVFormat.DEFAULT.withDelimiter(';').withRecordSeparator('\n');
     }
 
-    public List<PersonSample> getSamples() throws IOException {
-        List<PersonSample> samples = new ArrayList<PersonSample>();
+    public List<Sample> getSamples() throws IOException {
+        List<Sample> samples = new ArrayList<Sample>();
         
         for (int row = 0; row < getRecords().size(); row += 10)
-            samples.add(new PersonSample(getPersonSample(row)));
+            samples.add(new PersonSample(row/10, getPersonSample(row)));
         
         return samples;
     }

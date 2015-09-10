@@ -13,9 +13,7 @@ public class AcceleratedAnimator extends ConstantAnimator {
 
     @Override
     public int getNextMotion(int count) {
-        this.speed += acceleration*100/40;
-        System.out.println("double = " + this.speed);
-        System.out.println("int = " + Math.round(this.speed));
+        this.speed += acceleration*Animator.meterToPixels()/40;
         return (int) Math.round(this.speed/40);
     }
     
