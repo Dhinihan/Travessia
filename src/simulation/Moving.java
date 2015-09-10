@@ -16,33 +16,40 @@ public class Moving extends JPanel implements ActionListener {
     private static JFrame frame;
     int x, y, counter;
     public Timer timer;
+    private Animator animator;
     
     Moving() {
         x = 0;
         y = 0;
         counter = 0;
         timer = new Timer(25, this);
+        animator = Animator.create(0, 1);
     }
     
     public void restart(){
         x = 0;
         y = frame.getHeight()/2 - 20;
+        animator.setSpeed(0).setAcceleration(1);
         repaint();
     }
     
     public void actionPerformed(ActionEvent e) {
-        int c = 193/40;
-        int v = 193%40;
-        
-        x += c;
-        if(v - counter > 0)
-            x+=1;
-        
+        setVisible(false);
+        try {
+            Thread.sleep(20);
+        } catch (InterruptedException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        x += animator.getNextMotion(counter);
         repaint();
-        
-        counter = (++counter)%40;
-        
-        System.out.println("c = " + c + "\n" + "v = " + v + "\n" + "count = " + counter + "\n" + "x = " + x + "\n");
+        setVisible(true);
+        System.out.println("    x = " + x);
+        counter = (counter+1)%40;
+        if(x > frame.getSize().getWidth()){
+            timer.stop();
+            restart();
+        }
     }
     
     public void paintComponent(Graphics g) {
